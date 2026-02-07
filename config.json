@@ -1,6 +1,7 @@
 {
-  "continent": "Asia",
-  "year_min": 1960,
-  "year_max": 2020,
-  "gdp_min": 0
+	"continent": "Asia",
+	"year": 2000,
+	"operation":"Average",
+	"output":"dashboard"
+
 }
