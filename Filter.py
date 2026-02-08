@@ -62,7 +62,6 @@ def filter_gdp_data(data, config):
         country = [config.get("country").strip()] 
 
     year_filter = config.get("year") 
-    operation=config.get("operation")
 
     # Filter rows where continent matches AND year matches
     if config.get('operation')!='Average_c':
@@ -84,6 +83,6 @@ def filter_gdp_data(data, config):
             )
         )
 
-    return filtered, operation
+    return filtered
 
 
