@@ -1,4 +1,5 @@
 import csv
+import json
 from functools import reduce
 
 def load_gdp_data(file_path):
@@ -40,3 +41,14 @@ def load_gdp_data(file_path):
 
     except FileNotFoundError:
         raise Exception("CSV file not found. Please check the path.")
+
+
+# ---------- Load Config ----------
+def load_config(file_path):
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        raise Exception("Config file not found. Please check the path.")
+    except json.JSONDecodeError:
+        raise Exception("Config file is not a valid JSON.")

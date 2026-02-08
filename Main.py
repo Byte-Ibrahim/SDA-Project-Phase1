@@ -1,5 +1,5 @@
-from Loader import load_gdp_data 
-from Filter import filter_gdp_data,load_config
+from Loader import load_gdp_data,load_config 
+from Filter import filter_gdp_data
 from Manipulation import Statistical_Analysis
 from DashBoard import DashBoard
 
