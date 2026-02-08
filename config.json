@@ -1,7 +1,7 @@
 {
 	"continent": "Asia",
 	"year": 2000,
-	"operation":"Average",
+	"operation":"Average_r",
 	"output":"dashboard"
 
 }

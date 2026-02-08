@@ -1,4 +1,5 @@
 import csv
+from functools import reduce
 
 def load_gdp_data(file_path):
 
@@ -15,6 +16,8 @@ def load_gdp_data(file_path):
             year_columns = list(filter(lambda col: col.isdigit(), reader.fieldnames))
 
             # Transform each row into multiple year-dict entries
+
+
             data = list(
                 map(
                     lambda row: list(
@@ -33,7 +36,7 @@ def load_gdp_data(file_path):
             )
 
             # Flatten the list of lists
-            return [item for sublist in data for item in sublist]
+            return reduce(lambda a, b: a + b, data, [])
 
     except FileNotFoundError:
         raise Exception("CSV file not found. Please check the path.")
