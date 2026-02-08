@@ -5,11 +5,13 @@ from functools import reduce
 
 def load_gdp_data(file_path):
     try:
+
         with open(file_path, 'r', encoding='utf-8') as f:
             raw_reader = list(csv.DictReader(f))
             if not raw_reader: return []
             
             year_cols = list(filter(lambda c: c.isdigit(), raw_reader[0].keys()))
+            
             
             no_global = filter(lambda r: r.get("Continent", "").strip().lower() != "global", raw_reader)
             
