@@ -1,4 +1,6 @@
 import csv
+import json
+from functools import reduce
 
 def load_gdp_data(file_path):
 
@@ -15,6 +17,8 @@ def load_gdp_data(file_path):
             year_columns = list(filter(lambda col: col.isdigit(), reader.fieldnames))
 
             # Transform each row into multiple year-dict entries
+
+
             data = list(
                 map(
                     lambda row: list(
@@ -33,7 +37,18 @@ def load_gdp_data(file_path):
             )
 
             # Flatten the list of lists
-            return [item for sublist in data for item in sublist]
+            return reduce(lambda a, b: a + b, data, [])
 
     except FileNotFoundError:
         raise Exception("CSV file not found. Please check the path.")
+
+
+# ---------- Load Config ----------
+def load_config(file_path):
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        raise Exception("Config file not found. Please check the path.")
+    except json.JSONDecodeError:
+        raise Exception("Config file is not a valid JSON.")
